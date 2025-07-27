@@ -1,3 +1,10 @@
+# ===============================================================
+# FastAPI entrypoint for the notes_backend container
+# The FastAPI app instance declared as "app" below is the object
+# that should be imported via uvicorn as:
+#   uvicorn src.api.main:app
+# Ensure the above import path is used in your launch command.
+# ===============================================================
 from datetime import datetime, timedelta
 from typing import List, Optional
 
@@ -203,7 +210,10 @@ def get_current_user(db: Session = Depends(get_db), token: str = Depends(oauth2_
     return user
 
 # ================= FastAPI App Def ==================
-
+"""Module entrypoint for FastAPI notes backend.
+The ASGI app is defined below as 'app' and should be loaded with:
+    uvicorn src.api.main:app
+"""
 app = FastAPI(
     title="University Notes API",
     description="RESTful backend for student notes with authentication, note CRUD, categories, and tags.",
